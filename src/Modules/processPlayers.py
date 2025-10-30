@@ -70,7 +70,12 @@ def processPlayers(img, pose_module, pose_detect, draw, contador, id_player, tim
 
         msg_sleep = "Mais rápido!"
 
-        if check and distMaos <= DIFFICULTY and distPes >= DIFFICULTY and facing:
+        if not check and distMaos >= DIFFICULTY and distPes >= DIFFICULTY and facing:
+            check = True
+            time_init = time.time()
+
+        # Se jogador fechar (mãos e pés próximos), conta 1
+        elif check and distMaos <= DIFFICULTY and distPes <= DIFFICULTY and facing:
             time_finally = time.time()
             time_movement = time_finally - time_init
 
@@ -84,11 +89,7 @@ def processPlayers(img, pose_module, pose_detect, draw, contador, id_player, tim
                 cv2.putText(img, msg_sleep, (px, py), TEXT_STYLE_CAUNT, TEXT_SCALE_COUNT, TEXT_COLOR_RED, TEXT_SIZE_CAUNT)
 
             check = False
-
-        elif not check and distMaos >= DIFFICULTY and distPes <= DIFFICULTY and facing:
-            check = True
-            time_init = time.time()
-
+            
         # --- CONDIÇÃO DE VITÓRIA ---
         if contador >= MAX_JUMPING_JACKS:
             msg_winner = f"Jogador {id_player} venceu!"
