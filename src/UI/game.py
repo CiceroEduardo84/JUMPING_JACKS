@@ -18,12 +18,12 @@ def game_player(video, window, game_mode, w, h):
     pose_detect2 = pose_module.Pose(min_tracking_confidence=0.5, min_detection_confidence=0.5)
 
     # Variáveis de estado
-    time_init1 = 0
-    time_init2 = 0
+    time_init1 = time.time()
+    time_init2 = time.time()
     contador1 = 0
     contador2 = 0
-    check1 = True
-    check2 = True
+    check1 = False
+    check2 = False
     winner = False
     time_winner_player = 0
 
