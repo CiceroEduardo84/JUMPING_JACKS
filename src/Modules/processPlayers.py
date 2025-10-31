@@ -70,7 +70,7 @@ def processPlayers(img, pose_module, pose_detect, draw, contador, id_player, tim
 
         msg_sleep = "Mais rápido!"
 
-        if check and distMaos <= DIFFICULTY and distPes >= DIFFICULTY and facing:
+        if check and distMaos >= DIFFICULTY and distPes <= DIFFICULTY and facing:
             time_finally = time.time()
             time_movement = time_finally - time_init
 
@@ -85,7 +85,7 @@ def processPlayers(img, pose_module, pose_detect, draw, contador, id_player, tim
 
             check = False
 
-        elif not check and distMaos >= DIFFICULTY and distPes <= DIFFICULTY and facing:
+        elif not check and distMaos <= DIFFICULTY and distPes >= DIFFICULTY and facing:
             check = True
             time_init = time.time()
 
@@ -100,7 +100,7 @@ def processPlayers(img, pose_module, pose_detect, draw, contador, id_player, tim
 
         # --- CONTADOR VISUAL ---
         texto = f'Player {id_player}: {contador}'
-        cv2.rectangle(img, (0, 0), (185, 50), player_color, -1)
+        cv2.rectangle(img, (0, 0), (190, 50), player_color, -1)
         cv2.putText(img, texto, (10, 35), TEXT_STYLE_CAUNT, TEXT_SCALE_COUNT, TEXT_COLOR_WHITE, TEXT_SIZE_CAUNT)
 
     else:

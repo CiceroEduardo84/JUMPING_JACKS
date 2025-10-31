@@ -61,8 +61,8 @@ def game_player(video, window, game_mode, w, h):
             time_winner_player = time.time()
 
 
-        print((time.time() - time_winner_player) >= TIME_WINNER)
-        print(time.time() - time_winner_player)
+        # print((time.time() - time_winner_player) >= TIME_WINNER)
+        # print(time.time() - time_winner_player)
         # Tecla ESC ou tempo após vitória
         key = cv2.waitKey(20) & 0xFF
         if key == 27 or (winner and ((time.time() - time_winner_player) >= TIME_WINNER)):
